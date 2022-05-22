@@ -1,0 +1,15 @@
+body {
+    text-align: center;
+}
+
+.dice_form {
+    align: center;
+}
+
+.dice {
+    width: 3rem;
+    margin-top: .5rem;
+}
+ul {
+    list-style-type: none;
+}

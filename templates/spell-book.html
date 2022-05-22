@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spell Book</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="/static/styles.css" rel="stylesheet" />
+</head>
+<body>
+
+          <div class="container-fluid bg-secondary text-warning">
+      <br>
+              <form method="post" action="{{ url_for('spells') }}">
+              <h1>Spell Book</h1>
+                  <hr>
+              {{ spell_book.select(class="btn btn-dark dropdown-toggle") }}<br>
+
+              <br>
+              <br>
+              {{ spell_book.submit(class="btn btn-dark") }}
+                  </form>
+              <hr>
+          </div>
+                  <br>
+          <div class="container">
+              <div>{%  if spell %}
+
+                  <H1>{{ spell.name }}</H1><br>
+              </div>
+              <div>
+                  <h3>Description</h3>
+                  {% for x in spell.desc %}
+                  <p>{{ x }}</p>
+                  {% endfor %}
+              </div>
+              <br>
+
+              <div>
+                  {% if damage %}
+                  <h3>Damage Type</h3>
+                  {{ spell.damage.damage_type.name }}
+                    {% endif %}
+              </div>
+              <br>
+              <div>
+                  {% if higher_level %}
+                  <h3>Higher Level</h3>
+                  {% for x in spell.higher_level %}
+                  <p>{{ x }}</p><br>
+                  {% endfor %}
+                    {% endif %}
+              </div>
+              <br>
+              <div>
+                  <ul>{% if damage %}
+                  {% for x in spell.damage.damage_at_slot_level.items() %}
+                      <li><h5>Level: {{ x[0] }} / Damage: {{ x[1] }}</h5></li>
+                  {% endfor %}
+                  </ul>{% endif %}
+              </div>
+              <br>
+              <div>
+                  {% if range %}
+                  <h3>Range</h3>
+                  {{ spell.range }}
+                {% endif %}
+              </div>
+              <br>
+              <div>
+                  <h3>Components</h3>
+              <ul>
+                  {% for x in spell.components %}
+
+                  {% if x == 'V' %}
+                  <li><h4>{{ x }} ~ Verbal</h4></li>
+
+                  <ul>
+                      <li>A verbal component is a spoken incantation. To provide a verbal component, you must be able
+                          to speak in a strong voice. A silence spell or a gag spoils the incantation (and thus the
+                          spell). A spellcaster who has been deafened has a 20% chance to spoil any spell with a verbal
+                          component that he or she tries to cast.</li>
+                  </ul>
+                    {%  endif %}
+                  {% if x == 'S' %}
+                  <li><h4>{{ x }} ~ Somatic</h4></li>
+                  <ul>
+                      <li>A somatic component is a measured and precise movement of the hand. You must have at least
+                          one hand free to provide a somatic component. </li>
+                  </ul>
+                  {%  endif %}
+                  {% if x == 'M' %}
+                  <li><h4>{{ x }} ~ Material</h4></li>
+                  <ul>
+                      <li>A material component is one or more physical substances or objects that are annihilated by
+                          the spell energies in the casting process. Unless a cost is given for a material component,
+                          the cost is negligible. Don’t bother to keep track of material components with negligible
+                          cost. Assume you have all you need as long as you have your spell component pouch. </li>
+                  </ul>
+                  {%  endif %}
+                  {% if x == 'F' %}
+                  <li><h4>{{ x }} ~ Focus</h4></li>
+                  <ul>
+                      <li>A focus component is a prop of some sort. Unlike a material component, a focus is not
+                          consumed when the spell is cast and can be reused. As with material components, the cost for
+                          a focus is negligible unless a price is given. Assume that focus components of negligible
+                          cost are in your spell component pouch.</li>
+                  </ul>
+                  {%  endif %}
+                  {% if x == 'DF' %}
+                  <li>{{ x }} ~ Divine Focus</li>
+                  <ul>
+                      <li>A divine focus component is an item of spiritual significance. The divine focus for a cleric
+                          or a paladin is a holy symbol appropriate to the character’s faith. If the Components line
+                          includes F/DF or M/DF, the arcane version of the spell has a focus component or a material
+                          component (the abbreviation before the slash) and the divine version has a divine focus
+                          component (the abbreviation after the slash). </li>
+                  </ul>
+                  {%  endif %}
+                  {% if x == 'XP' %}
+                  <li><h4>{{ x }} ~ Experience Cost</h4></li>
+                  <ul>
+                      <li>Some powerful spells entail an experience point cost to you. No spell can restore the XP lost
+                          in this manner. You cannot spend so much XP that you lose a level, so you cannot cast the
+                          spell unless you have enough XP to spare. However, you may, on gaining enough XP to attain a
+                          new level, use those XP for casting a spell rather than keeping them and advancing a level.
+                          The XP are treated just like a material component—expended when you cast the spell, whether or
+                          not the casting succeeds.</li>
+                  </ul>
+                  {%  endif %}
+                  {% endfor %}
+              </ul>
+              </div>
+              <br>
+              <div>
+                  <h3>Material</h3>
+                  {{ spell.material }}
+              </div>
+              <br>
+              <div>
+                  <h3>Ritual</h3>
+                  {{ spell.ritual }}
+              </div>
+              <br>
+              <div>
+                  <h3>Duration</h3>
+                  {{ spell.duration }}
+              </div>
+              <br>
+              <div>
+                  <h3>Concentration</h3>
+                  {{ spell.concentration }}
+              </div>
+              <br>
+              <div>
+                  <h3>Casting Time</h3>
+                  {{ spell.casting_time }}
+              </div>
+              <br>
+              <div>
+                  <h3>Attack Type</h3>
+                  {{ spell.attack_type }}
+              </div>
+              <br>
+              <div>
+                  <h3>School</h3>
+                  {{ spell.school.name }}
+              </div>
+              <br>
+              <div>
+                  <h3>Classes</h3>
+                  {% for x in spell.classes %}
+                  {{ x.name }}<br>
+                  {% endfor %}
+              </div>
+              <br>
+              <div>
+                  <h3>Sub-Classes</h3>
+                  {% for x in spell.subclasses %}
+                  {{ x.name }}<br>
+                  {% endfor %}
+                    {% endif %}
+              </div>
+
+                  {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                  <p>{{ message }}</p>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+      </div>
+
+</body>
+</html>
