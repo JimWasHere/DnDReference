@@ -28,4 +28,14 @@ class SpellForm(FlaskForm):
     submit = SubmitField("Cast")
 
 
+monster_list = [(0, 'Select')]
+monsters = requests.get(f"{dnd_api_url}/api/monsters").json()["results"]
+for monster in monsters:
+    monster_list.append((monster['index'], monster['name']))
+print(monster_list)
+
+
+class MonsterForm(FlaskForm):
+    select = SelectField("Monsters", choices=monster_list)
+    submit = SubmitField("Summon")
 

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Monsters</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="/static/styles.css" rel="stylesheet" />
+</head>
+<body>
+        <div class="container-fluid bg-secondary text-warning">
+            <br>
+              <form method="post" action="{{ url_for('monsters') }}">
+              <h1>Monsters</h1>
+                  <hr>
+              {{ monster_list.select(class="btn btn-dark dropdown-toggle") }}<br>
+
+              <br>
+              <br>
+              {{ monster_list.submit(class="btn btn-dark") }}
+                  </form>
+              <hr>
+          </div>
+                  <br>
+        <div class="container">
+              <div>{%  if monster %}
+
+                  <H1>{{ monster.name }}</H1><br>
+              </div>
+
+                  <div>
+                  <h3>Size</h3><br>
+                  <p>{{ monster.size }}</p>
+
+              </div>
+                <div>
+                  <h3>Type</h3><br>
+                  <p>{{ monster.type }}</p>
+
+              </div>
+              <div>
+                  <h3>Alignment</h3><br>
+                  <p>{{ monster.alignment }}</p>
+
+              </div>
+              <div>
+                  <h3>Armor Class</h3><br>
+                  <p>{{ monster.armor_class }}</p>
+
+              </div>
+              <div>
+                  <h3>Hit Points</h3><br>
+                  <p>{{ monster.hit_points }}</p>
+
+              </div>
+              <div>
+                  <h3>Hit Dice</h3><br>
+                  <p>{{ monster.hit_dice }}</p>
+
+              </div>
+              <div>
+
+                  <h3>Speed</h3>
+                  <ul>
+                  {% for x in monster.speed.items() %}
+                  <li>{{ x[0] }} : {{ x[1] }}</li>
+                      {% endfor %}
+                  </ul>
+              </div>
+              <div>
+                  <h3>Strength</h3><br>
+                  <p>{{ monster.strength }}</p>
+
+              </div>
+              <div>
+                  <h3>Dexterity</h3><br>
+                  <p>{{ monster.dexterity }}</p>
+
+              </div>
+              <div>
+                  <h3>Constitution</h3><br>
+                  <p>{{ monster.constitution }}</p>
+
+              </div>
+              <div>
+                  <h3>Intelligence</h3><br>
+                  <p>{{ monster.intelligence }}</p>
+
+              </div>
+              <div>
+                  <h3>Wisdom</h3><br>
+                  <p>{{ monster.wisdom }}</p>
+
+              </div>
+              <div>
+                  <h3>Charisma</h3><br>
+                  <p>{{ monster.charisma }}</p>
+
+              </div>
+              <div>
+                  <h3>Proficiencies</h3>
+
+                  {% for x in monster.proficiencies %}
+                  <dl>
+                  <dt>{{ x.proficiency.name.split(":")[0] }}</dt>
+                  <dd>{{ x.proficiency.name.split(":")[1] }}</dd>
+                  </dl>
+                  {% endfor %}
+              </div>
+              <div>
+                  <h3>Damage Vulnerabilities</h3><br>
+                  {% if monster.damage_vulnerabilities %}
+
+                  {% for x in monster.damage_vulnerabilities %}
+                  <p>{{ x.title() }}</p>
+                  {% endfor %}
+
+                  {% else %}
+                  <p>None...</p>
+                  {% endif %}
+
+              </div>
+              <div>
+                  <h3>Damage Resistances</h3><br>
+                  {% if monster.damage_resistances %}
+
+                  {% for x in monster.damage_resistances %}
+                  <p>{{ x.title() }}</p>
+                  {% endfor %}
+
+                  {% else %}
+                  <p>None...</p>
+                  {% endif %}
+
+              </div>
+              <div>
+                  <h3>Damage Immunities</h3><br>
+                  {% if monster.damage_immunities %}
+
+                  {% for x in monster.damage_immunities %}
+                  <p>{{ x.title() }}</p>
+                  {% endfor %}
+
+                  {% else %}
+                  <p>None...</p>
+                  {% endif %}
+
+              </div>
+              <div>
+                  <h3>Condition Immunities</h3><br>
+                  {% if monster.condition_immunities %}
+
+                  {% for x in monster.condition_immunities %}
+                  <p>{{ x.title() }}</p>
+                  {% endfor %}
+
+                  {% else %}
+                  <p>None...</p>
+                  {% endif %}
+
+              </div>
+              <div>
+
+                  <h3>Senses</h3>
+                  <ul>
+                  {% for x in monster.senses.items() %}
+                  <li>{{ x[0] }} : {{ x[1] }}</li>
+                      {% endfor %}
+                  </ul>
+              </div>
+              <div>
+
+                  <h3>Languages</h3>
+
+                  {% for x in monster.languages.split(", ") %}
+                  <p>{{ x }}</p>
+                      {% endfor %}
+
+              </div>
+              <div>
+                  <h3>Challenge Rating</h3><br>
+                  <p>{{ monster.challenge_rating }}</p>
+
+              </div>
+              <div>
+                  <h3>Experience</h3><br>
+                  <p>{{ monster.xp }} xp</p>
+
+              </div>
+              <div>
+                  <h3>Special Abilities</h3><br>
+                  <dl>
+                  {% for x in monster.special_abilities %}
+                      <dt>{{ x.name }}</dt>
+                      <dd>{{ x.desc }}</dd>
+                        {% if x.usage %}
+                      {% for y in x.usage.items() %}
+                      <dt>{{ y[0] }}</dt>
+                      <dd>{{ y[1] }}</dd>
+                      {% endfor %}
+                      {% endif %}
+
+                  </dl>
+                  {% endfor %}
+              <div>
+                  <h3>Actions</h3><br>
+                <dl>
+        {% for x in monster.actions %}
+                  <dt>{{ x.name }}</dt>
+                    <dd>{{ x.desc }}</dd>
+         {% if x.options %}
+                  <dl>Options</dl>
+                    <dt>Choose</dt><br>
+                    <dt>{{ x.options.choose }}</dt><br>
+                    <hr>
+            {% for _ in x.options.choose.from %}
+                    <dd>{{ _.name }}</dd>
+                    <dd>{{ _.count }}</dd>
+                    <dd>{{ _.type }}</dd>
+            {% endfor %}
+         {% endif %}
+               {% if x.attack_bonus %}
+                    <dl><h5>Attack Bonus</h5></dl>
+                    <dt>{{ x.attack_bonus }}</dt>
+               {% endif %}
+                    {% if x.damage %}
+                    <h5>Damage Type</h5>
+               {% for _ in x.damage %}
+                    <dl>{{ _.damage_type.name }}</dl>
+                    <dt>{{ _.damage_dice }}</dt><br>
+
+               {% endfor %}
+                    <hr>
+               {% endif %}
+        {% endfor %}
+
+
+                </dl>
+              </div>
+              </div>
+                <div>
+                  {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    {% for message in messages %}
+                  <p>{{ message }}</p>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                  {% endif %}
+                </div>
+
+      </div>
+</body>
+</html>
