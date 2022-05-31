@@ -35,6 +35,9 @@ h1, h3, h4, h5, h6 {
     margin-top: .5rem;
 }
 
+.dice_results {
+    text-decoration: none;
+}
 .components {
     margin: 3rem;
     line-height: 1.5rem;

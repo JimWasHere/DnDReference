@@ -56,22 +56,26 @@
 
                    <h3>Individual Rolls</h3>
                    <div class="container">
-                   <p>{{ ', '.join(each) }}</p>
+                   <h4 class="dice_results">{{ ', '.join(each) }}</h4>
                     </div>
+                   <h2>Total</h2>
+                   <h2>{{ total }}</h2>
               <hr>
                    <div class="row">
                        <div class="col">
-                           <h4>Highest Roll</h4>
-                           {{ max }}
+                           <h4 class="dice_results">Highest Roll: {{ max }}</h4>
+                           <h5 class="dice_results">Total Minus Highest: {{ total - max }}</h5>
+
                        </div>
                        <div class="col">
-                           <h4>Lowest Roll</h4>
-                           {{ min }}
+                           <h4 class="dice_results">Lowest Roll: {{ min }}</h4>
+                           <h2></h2>
+                           <h5 class="dice_results">Total Minus Lowest: {{ total - min }}</h5>
                        </div>
 
                    </div>
-                   <h2>Total</h2>
-                   <h2>{{ total }}</h2>
+                        <h4 class="dice_results">Total Minus Highest/Lowest: {{ total - min - max }}</h4>
+
                    <hr>
                  {% with messages = get_flashed_messages() %}
                     {% if messages %}
