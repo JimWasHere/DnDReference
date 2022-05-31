@@ -28,11 +28,12 @@ h1, h3, h4, h5, h6 {
 
 .dice_form {
     align: center;
+    margin-top: 3rem;
 }
 
 .dice {
     width: 3rem;
-    margin-top: .5rem;
+    margin-top: 0.5rem;
 }
 
 .dice_results {
