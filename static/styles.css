@@ -21,8 +21,9 @@ body {
     width: 3rem;
 }
 
-h3, h4, h5, h6, dl {
+h1, h3, h4, h5, h6 {
     text-decoration: underline;
+    margin: 30px;
 }
 
 .dice_form {
@@ -32,6 +33,11 @@ h3, h4, h5, h6, dl {
 .dice {
     width: 3rem;
     margin-top: .5rem;
+}
+
+.components {
+    margin: 3rem;
+    line-height: 1.5rem;
 }
 ul {
     list-style-type: none;
