@@ -32,10 +32,21 @@ monster_list = [(0, 'Select')]
 monsters = requests.get(f"{dnd_api_url}/api/monsters").json()["results"]
 for monster in monsters:
     monster_list.append((monster['index'], monster['name']))
-print(monster_list)
+# print(monster_list)
 
 
 class MonsterForm(FlaskForm):
     select = SelectField("Monsters", choices=monster_list)
     submit = SubmitField("Summon")
 
+
+classes_list = [(0, "Select")]
+classes = requests.get(f"{dnd_api_url}/api/classes").json()["results"]
+for clss in classes:
+    classes_list.append((clss['index'], clss['name']))
+print(classes_list)
+
+
+class ClassForm(FlaskForm):
+    select = SelectField("Classes", choices=classes_list)
+    submit = SubmitField("Submit")
