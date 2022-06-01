@@ -18,7 +18,7 @@
                   </form>
               <hr>
           </div>
-                  <br>
+
         <div class="container-lg rounded border border-dark results">
     {%  if monster %}
             <div>
@@ -60,9 +60,11 @@
 
                   <h3>Speed</h3>
                   <ul>
+                      {% if speed %}
             {% for x in monster.speed.items() %}
                   <li>{{ x[0] }} : {{ x[1] }}</li>
             {% endfor %}
+                      {% endif %}
                   </ul><br>
               </div>
     </div>
@@ -171,19 +173,21 @@
 
                   <h3>Senses</h3>
                   <ul>
+                      {% if senses %}
               {% for x in monster.senses.items() %}
                   <li>{{ x[0] }} : {{ x[1] }}</li>
               {% endfor %}
+                      {% endif %}
                   </ul>
               </div>
               <div>
 
                   <h3>Languages</h3>
-
+                {% if languages %}
               {% for x in monster.languages.split(", ") %}
                   <p>{{ x }}</p>
               {% endfor %}
-
+                {% endif %}
               </div>
               <div>
                   <h3>Challenge Rating</h3><br>
@@ -290,6 +294,7 @@
                     {% endfor %}
                     {% endif %}
                     {% endwith %}
+
     {% endif %}
                 </div>
 

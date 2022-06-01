@@ -9,9 +9,11 @@ body {
 .header {
     background-color: #290000;
     color: #F7CE65;
+    padding-bottom: 80px;
 }
 
 .results {
+    padding-top: 30px;
     background-color: #F7CE65;
 }
 
