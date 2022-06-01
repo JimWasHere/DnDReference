@@ -3,9 +3,9 @@
     {% block title %} Monsters {% endblock %}
 
 
-<body>
+
     {% block content %}
-        <div class="container-fluid header">
+        <div class="container-lg header">
             <br>
               <form method="post" action="{{ url_for('monsters') }}">
               <h1>Monsters</h1>
@@ -195,10 +195,10 @@
                   <p>{{ monster.xp }} xp</p>
 
               </div>
-            <div class="row">
+
 
                   <h3>Special Abilities</h3><br>
-
+                <div class="row">
               {% for x in monster.special_abilities %}
                <div class="col">
 
@@ -217,9 +217,9 @@
             <hr>
               </div>
             <br>
-    <div class="row">
-                  <h3>Actions</h3><br>
 
+                  <h3>Actions</h3><br>
+        <div class="row">
         {% for x in monster.actions %}
         <div>
                   <dt>{{ x.name }}</dt>
@@ -295,5 +295,4 @@
 
       </div>
 {% endblock %}
-</body>
-</html>
+

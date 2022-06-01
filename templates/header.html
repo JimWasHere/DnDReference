@@ -1,5 +1,6 @@
+{% block head %}
 <!DOCTYPE html>
-<html lang="en">
+<html class="has-sticky-footer" lang="en">
 <head>
 
     <meta charset="UTF-8">
@@ -16,8 +17,25 @@
 </head>
 
 
-<body>
+<body style="margin-bottom: 60px;">
+    <div>
+        {% endblock %}
 {% block content%}
+
+
+    </div>
 {% endblock %}
+{% block footer %}
+<footer class="footer" style="height: 60px;">
+    <div class="container-lg card card-footer text-muted header">
+        <h5 class="">Copyright 2022 Dumbass Enterprises</h5>
+    </div>
+</footer>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+
 </body>
 </html>
+{% endblock %}
