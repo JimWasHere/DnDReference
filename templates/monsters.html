@@ -5,7 +5,7 @@
 
 
     {% block content %}
-        <div class="container-lg header">
+        <div class="container-fluid header">
             <br>
               <form method="post" action="{{ url_for('monsters') }}">
               <h1>Monsters</h1>
@@ -18,9 +18,9 @@
                   </form>
               <hr>
           </div>
-
+        {%  if monster %}
         <div class="container-lg rounded border border-dark results">
-    {%  if monster %}
+
             <div>
 
                   <H1>{{ monster.name }}</H1><br>

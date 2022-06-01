@@ -7,14 +7,23 @@ body {
 }
 
 .header {
-    background-color: #290000;
+    background-color: #071718;
     color: #F7CE65;
-    padding-bottom: 80px;
+    padding-bottom: 10px;
+
+}
+
+.navbar {
+    background-color: #071718;
+}
+
+.copyright {
+    padding-left: 38%;
 }
 
 .results {
     padding-top: 30px;
-    background-color: #F7CE65;
+    background-color: #d4dca1;
 }
 
 .number {
@@ -45,6 +54,8 @@ h1, h3, h4, h5, h6 {
     margin: 3rem;
     line-height: 1.5rem;
 }
+
+
 ul {
     list-style-type: none;
 }
