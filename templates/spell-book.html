@@ -16,9 +16,10 @@
                   </form>
               <hr>
           </div>
-                  <br>
-          <div class="container-lg rounded border border-dark results">
-              <div>{%  if spell %}
+
+            {%  if spell %}
+    <div class="container-lg rounded border border-dark results">
+              <div>
 
                   <H1>{{ spell.name }}</H1><br>
               </div>
@@ -159,7 +160,9 @@
               <br>
               <div>
                   <h3>School</h3>
+                  {% if school %}
                   {{ spell.school.name }}
+                  {% endif %}
               </div>
               <br>
               <div>

@@ -16,7 +16,7 @@ class DiceForm(FlaskForm):
     submit = SubmitField("Roll")
 
 
-spell_list = [(0, 'Select')]
+spell_list = [(None, 'Select')]
 spells = requests.get(f"{dnd_api_url}/api/spells").json()["results"]
 for spell in spells:
     spell_list.append((spell['index'], spell['name']))
@@ -28,7 +28,7 @@ class SpellForm(FlaskForm):
     submit = SubmitField("Cast")
 
 
-monster_list = [(0, 'Select')]
+monster_list = [(None, 'Select')]
 monsters = requests.get(f"{dnd_api_url}/api/monsters").json()["results"]
 for monster in monsters:
     monster_list.append((monster['index'], monster['name']))
@@ -40,7 +40,7 @@ class MonsterForm(FlaskForm):
     submit = SubmitField("Summon")
 
 
-classes_list = [(0, "Select")]
+classes_list = [(None, "Select")]
 classes = requests.get(f"{dnd_api_url}/api/classes").json()["results"]
 for clss in classes:
     classes_list.append((clss['index'], clss['name']))
