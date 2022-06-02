@@ -17,9 +17,9 @@
         </div>
      {% if classes %}
         <div class="container-lg rounded border border-dark results">
-            {% for x in classes %}
+        {% for x in classes.items() %}
             <p>{{ x }}</p>
-            {% endfor %}
+        {% endfor %}
 
 
 
