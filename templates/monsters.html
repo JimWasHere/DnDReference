@@ -8,115 +8,121 @@
         <div class="container-fluid header">
             <br>
               <form method="post" action="{{ url_for('monsters') }}">
-              <h1>Monsters</h1>
+                <h1>Monsters</h1>
                   <hr>
-              {{ monster_list.select(class="btn btn-dark dropdown-toggle") }}<br>
+                {{ monster_list.select(class="btn btn-dark dropdown-toggle") }}<br>
 
-              <br>
-              <br>
-              {{ monster_list.submit(class="btn btn-dark") }}
-                  </form>
+                <br>
+                <br>
+                {{ monster_list.submit(class="btn btn-dark") }}
+              </form>
               <hr>
-          </div>
-        {%  if monster %}
+        </div>
+    {%  if monster %}
         <div class="container-lg rounded border border-dark results">
 
-            <div>
+            <div class="card results">
 
-                  <H1>{{ monster.name }}</H1><br>
-              </div>
-<div class="row rounded">
+                <H1>{{ monster.name }}</H1><br>
+
+                <div class="row rounded">
                   <div class="col">
-                  <h3>Size</h3>
-                  <p>{{ monster.size }}</p><br>
+                    <h3>Size</h3>
+                    <p>{{ monster.size }}</p><br>
+                  </div>
 
-              </div>
-                <div class="col">
-                  <h3>Type</h3>
-                  <p>{{ monster.type }}</p><br>
+                  <div class="col">
+                    <h3>Type</h3>
+                    <p>{{ monster.type }}</p><br>
+                  </div>
 
-              </div>
-              <div class="col">
-                  <h3>Alignment</h3>
-                  <p>{{ monster.alignment }}</p><br>
+                  <div class="col">
+                    <h3>Alignment</h3>
+                    <p>{{ monster.alignment }}</p><br>
+                  </div>
 
-              </div>
-              <div class="col">
-                  <h3>Armor Class</h3>
-                  <p>{{ monster.armor_class }}</p><br>
+                  <div class="col">
+                    <h3>Armor Class</h3>
+                    <p>{{ monster.armor_class }}</p><br>
+                  </div>
 
-              </div>
-              <div class="col">
-                  <h3>Hit Points</h3>
-                  <p>{{ monster.hit_points }}</p><br>
+                  <div class="col">
+                    <h3>Hit Points</h3>
+                    <p>{{ monster.hit_points }}</p><br>
+                  </div>
 
-              </div>
-              <div class="col">
-                  <h3>Hit Dice</h3>
-                  <p>{{ monster.hit_dice }}</p><br>
+                  <div class="col">
+                    <h3>Hit Dice</h3>
+                    <p>{{ monster.hit_dice }}</p><br>
+                  </div>
 
-              </div>
-              <div class="col">
-
-                  <h3>Speed</h3>
-                  <ul>
+                  <div class="col">
+                    <h3>Speed</h3>
+                    <ul>
                       {% if speed %}
-            {% for x in monster.speed.items() %}
-                  <li>{{ x[0] }} : {{ x[1] }}</li>
-            {% endfor %}
+                        {% for x in monster.speed.items() %}
+                      <li>{{ x[0] }} : {{ x[1] }}</li>
+                        {% endfor %}
                       {% endif %}
-                  </ul><br>
-              </div>
-    </div>
+                    </ul>
+                      <br>
+                  </div>
+                </div>
+            </div>
 
-    <div class="row">
-              <div class="col">
-                  <h3>Strength</h3>
-                  <p>{{ monster.strength }}</p><br>
+            <div class="card results">
+                <div class="row">
+                  <div class="col">
+                      <h3>Strength</h3>
+                      <p>{{ monster.strength }}</p><br>
+                  </div>
 
-              </div>
-              <div class="col">
-                  <h3>Dexterity</h3>
-                  <p>{{ monster.dexterity }}</p><br>
+                  <div class="col">
+                      <h3>Dexterity</h3>
+                      <p>{{ monster.dexterity }}</p><br>
+                  </div>
 
-              </div>
-              <div class="col">
-                  <h3>Constitution</h3>
-                  <p>{{ monster.constitution }}</p><br>
+                  <div class="col">
+                      <h3>Constitution</h3>
+                      <p>{{ monster.constitution }}</p><br>
+                  </div>
 
-              </div>
-              <div class="col">
-                  <h3>Intelligence</h3>
-                  <p>{{ monster.intelligence }}</p><br>
+                  <div class="col">
+                      <h3>Intelligence</h3>
+                      <p>{{ monster.intelligence }}</p><br>
+                  </div>
 
-              </div>
-              <div class="col">
-                  <h3>Wisdom</h3>
-                  <p>{{ monster.wisdom }}</p><br>
+                  <div class="col">
+                      <h3>Wisdom</h3>
+                      <p>{{ monster.wisdom }}</p><br>
+                  </div>
 
-              </div>
-              <div class="col">
-                  <h3 class="">Charisma</h3>
-                  <p>{{ monster.charisma }}</p><br>
+                  <div class="col">
+                      <h3 class="">Charisma</h3>
+                      <p>{{ monster.charisma }}</p><br>
+                  </div>
 
-              </div>
-    </div>
+                </div>
+            </div>
 
-        <div class="row">
+            <div class="card results">
+                <div class="row">
 
                   <h3>Proficiencies</h3>
-            <hr>
-            {% for x in monster.proficiencies %}
-            <div class="col">
-                  <dl>
-                  <dt>{{ x.proficiency.name.split(":")[0] }}</dt>
-                  <dd>{{ x.proficiency.name.split(":")[1] }}</dd>
-                  </dl>
-            </div>
-            {% endfor %}
 
-        </div>
+                    {% for x in monster.proficiencies %}
+                    <div class="col">
+                        <dl>
+                            <dt>{{ x.proficiency.name.split(":")[0] }}</dt>
+                            <dd>{{ x.proficiency.name.split(":")[1] }}</dd>
+                        </dl>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
             <hr>
+
               <div>
                   <h3>Damage Vulnerabilities</h3><br>
             {% if monster.damage_vulnerabilities %}
@@ -299,5 +305,5 @@
                 </div>
 
       </div>
-{% endblock %}
+    {% endblock %}
 
