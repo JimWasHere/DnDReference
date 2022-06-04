@@ -17,8 +17,13 @@
         </div>
      {% if classes %}
         <div class="container-lg rounded border border-dark results">
-        {% for x in classes.items() %}
-            <div class="card results">{{ x }}</div>
+        {% for x, y in classes.items() %}
+            <div class="card results">{{ x }}: <br>
+
+                {{ y }}
+
+            </div>
+
         {% endfor %}
 
 
