@@ -22,6 +22,7 @@ body {
 }
 
 .results {
+    border: 2px ridge #030303;
     padding-top: 30px;
     background-color: #d4dca1;
 }
