@@ -1,6 +1,7 @@
 body {
     background-image: url("https://images.unsplash.com/photo-1650024520226-b63a33baff60?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGR1bmdlb25zJTIwYW5kJTIwZHJhZ29uc3xlbnwwfDB8MHx8&auto=format&fit=crop&w=500");
     background-size: cover;
+    background-position: center;
     font-family: 'Macondo', cursive;
     text-align: center;
     background-color: #030303;
