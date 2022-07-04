@@ -17,16 +17,64 @@
         </div>
      {% if classes %}
         <div class="container-lg rounded border border-dark results">
-        {% for x, y in classes.items() %}
-            <div class="card results">{{ x.title() }} <br>
+<!--        {% for x, y in classes.items() %}-->
+<!--            <div class="card results">{{ x.title() }} <br>-->
+<!--                {{ y }}-->
 
-                {{ y }}
+
+<!--            </div>-->
+
+<!--        {% endfor %}-->
+            <div class="card results">
+                <h2>{{ classes.name }}</h2>
+                <h3>Hit Die</h3>
+                    <p>{{ classes.hit_die }}</p>
+                <h3>Proficiencies</h3>
+                <h4>Choose:</h4>
+                    <p>{{ classes.proficiency_choices[0].choose }}</p>
+
+                <h5>From: </h5>
+                <div class="row">
+                {% for x in classes.proficiency_choices[0].from %}
+                    <div class="col">
+                        <p>{{ x.name.split(":")[1] }}</p>
+                    </div>
+                {% endfor %}
+                </div>
+                <h5>Weapons and Armor Proficiencies</h5>
+                <div class="row">
+                    {% for x in classes.proficiencies %}
+                    <div class="col">
+                        <p>{{ x.name }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <h3>Saving Throws</h3>
+                <div class="row">
+                    {% for x in classes.saving_throws %}
+                    <div class="col">
+                        {{ x.name }}
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <h3>Starting Equipment</h3>
+                <div class="row">
+                    {% for x in classes.starting_equipment_options %}
+                    <div class="col">
+                        <h5>Choose</h5>
+                        <p>{{ x.choose }}</p>
+                        <ul>
+
+                            <li>{{ x.from }}</li>
+
+                        </ul>
+                    </div>
+                    {% endfor %}
+                </div>
 
             </div>
-
-        {% endfor %}
-
-
 
             <div>
                   {% with messages = get_flashed_messages() %}
